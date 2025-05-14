@@ -1,0 +1,76 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Ancestralidade {
+  active: Boolean!
+  ancestralidade: String!
+  createdAt: DateTime!
+  descricao: String!
+  explicacao: String!
+  href: String!
+  id: Float!
+  referencia: [Referencia!]
+  tracos: [Float!]!
+  updatedAt: DateTime
+}
+
+type Condicao {
+  active: Boolean!
+  condicao: String!
+  createdAt: DateTime!
+  descricao: String!
+  id: Float!
+  updatedAt: DateTime
+}
+
+input CreateAncestralidadeDto {
+  ancestralidade: String!
+  descricao: String!
+  explicacao: String!
+  href: String!
+  tracos: [Float!]!
+}
+
+input CreateCondicaoDto {
+  condicao: String!
+  descricao: String!
+}
+
+input CreateReferenciaDto {
+  aventura: Int
+  titulo: String!
+  url: String!
+  urlPaizo: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  addAncestralidade(input: CreateAncestralidadeDto!): Ancestralidade!
+  addCondicao(input: CreateCondicaoDto!): Condicao!
+  addReferencia(input: CreateReferenciaDto!): Referencia!
+}
+
+type Query {
+  ancestralidade(id: Float!): Ancestralidade
+  ancestralidades: [Ancestralidade!]!
+  condicao(id: Float!): Condicao
+  condicoes: [Condicao!]!
+  referencia: Referencia
+  referencias: [Referencia!]!
+}
+
+type Referencia {
+  active: Boolean!
+  aventura: Float
+  createdAt: DateTime!
+  id: Float!
+  titulo: String!
+  updatedAt: DateTime
+  url: String
+  urlPaizo: String!
+}
